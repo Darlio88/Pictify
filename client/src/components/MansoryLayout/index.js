@@ -17,7 +17,7 @@ const breakpointColumnsObj = {
     const [posts, setPosts] = useState([])
     
     useEffect(()=>{
-     axios.get('http://localhost:4000/api/posts').then((response)=>{
+     axios.get('http://178.79.132.139:4000/api/posts').then((response)=>{
       console.log(response.data)
       setPosts(response.data)
      }).catch(err=>{
@@ -26,8 +26,8 @@ const breakpointColumnsObj = {
      })
     },[])
     return (
-      <Mansory className="flex animate-slide-fwd " breakpointCols={breakpointColumnsObj}>
-         {posts.map((post)=>(<Post key={post.id} post={post} />))}
+      <Mansory className="flex animate-slide-fwd mt-10 " breakpointCols={breakpointColumnsObj}>
+         {posts.map((post, idx)=>(<Post key={idx} post={post} />))}
       </Mansory>
     )
   }

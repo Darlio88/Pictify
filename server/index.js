@@ -1,8 +1,9 @@
 import express from 'express'
 import dotenv from 'dotenv'
 import bodyParser from 'body-parser'
+import mongoose from 'mongoose'
 import cors from 'cors'
-import {databaseConnection} from './config/index.js'
+import {databaseConnection} from './config/dataConn.js'
 
 //routes
 import userRoutes from './routes/userRoutes.js'
@@ -20,13 +21,11 @@ app.use(cors())
 app.use('/api/users', userRoutes)
 app.use('/api/posts', postRoutes)
 
-app.get('/',(req, res)=>{
-    res.status(200).send("welcome home")
-})
-
 const PORT = process.env.PORT || 4000
 
-app.listen(PORT, ()=>{
-    console.log(`app running on port ${PORT}`)
+mongoose.connection.once('open',(stream)=>{
+    console.log("connected to db")
+    app.listen(PORT, ()=>{
+        console.log(`app running on port ${PORT}`)
+    })
 })
-

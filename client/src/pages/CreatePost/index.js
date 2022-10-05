@@ -1,9 +1,11 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useLayoutEffect} from 'react'
+import {useNavigate} from 'react-router-dom'
 import axios from 'axios'
 //styles
 import {PostContainer, PostForm, ImageHolder, Button} from './styles'
 
 const Index = () => {
+  const navigate = useNavigate()
   const [encodedFile, setEncodedFile] = useState('')
    const user = JSON.parse(localStorage.getItem('user'))
   const fileEncoder = (file) =>{
@@ -25,7 +27,7 @@ const Index = () => {
    console.log(encodedFile)
    if(!user) return alert("login to create a post")
    try {
-    axios.post('http://localhost:4000/api/posts/create-post', {postImage:encodedFile, createdBy:user._id}).then(res=>{
+    axios.post('http://178.79.132.139:4000/api/posts/create-post', {postImage:encodedFile, createdBy:user._id}).then(res=>{
       console.log(res.data)
     }).catch(err=>{
       console.log(err)

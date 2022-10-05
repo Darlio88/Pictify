@@ -12,7 +12,7 @@ const Index = () => {
  const handleSubmit =() =>{
   try {
     console.log({userName, email, password})
-    axios.post('http://localhost:4000/api/users/signup',{userName, email, password}).then(res=>{
+    axios.post('http://178.79.132.139:4000/api/users/signup',{userName, email, password}).then(res=>{
      console.log(res.data)
      localStorage.setItem('user', JSON.stringify(res.data))
     }).catch(err=>{

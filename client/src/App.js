@@ -12,10 +12,10 @@ import CreatePost from './pages/CreatePost'
 function App() {
   return (
 <Routes>
-  <Route path='/' element={<Home />} />
-  <Route path='/signup' element={<Signup />} />
-  <Route path='/signin' element={<Signin />} />
-  <Route path='/create-post' element={<CreatePost />} />
+  <Route index element={<Home />} />
+  <Route path='signup' element={<Signup />} />
+  <Route path='signin' element={<Signin />} />
+  <Route path='create-post' element={<CreatePost />} />
 </Routes>
   );
 }

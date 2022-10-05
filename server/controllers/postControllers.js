@@ -4,7 +4,7 @@ import {PictifyImage} from '../models/postModels.js'
 
 export const allPosts = async (req, res) =>{
 try {
-    const allPosts =await PictifyImage.find({})   
+    const allPosts =await PictifyImage.find({}).select("-_id")   
     res.status(200).json(allPosts) 
 } catch (error) {
     console.log(error)
@@ -23,7 +23,7 @@ export const createPost = async (req, res) =>{
         console.log(uploadedResponse.public_id)
         const newPost = await PictifyImage.create({createdBy, postImage:uploadedResponse.public_id})
         newPost.save()
-        res.status(200).send(newPost)
+        res.status(200).send({msg:"new post succesffully created"})
     } catch (error) {
         console.log(error)
         res.status(500).send(error)

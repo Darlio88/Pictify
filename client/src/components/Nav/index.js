@@ -17,6 +17,9 @@ const Index = () => {
   const navToggler = () =>{
     setNavActive((curr)=>!curr)
   }
+  const handleLogout = () =>{
+    localStorage.clear()
+  }
   return (
     <>
     <NavContainer>
@@ -38,7 +41,7 @@ const Index = () => {
           <NavLinks>Home</NavLinks>
           <NavLinks>Create</NavLinks>
           <NavLinks>About</NavLinks>
-          <NavLinks>Logout</NavLinks>
+          <NavLinks onClick={handleLogout}>Logout</NavLinks>
     </NavContainerSide>)}
     </>
   )
