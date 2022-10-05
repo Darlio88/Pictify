@@ -17,7 +17,7 @@ useEffect(() => {
 
   return (
     <PostContainer>
-      <Image cloudName="Expert Shire" publicId={post.postImage}>
+      <Image cloudName="Expert shire" publicId={post.postImage}>
       <Transformation crop="scale" width="280" angle="10" />
      </Image>
         <PostDetailsContainer>
