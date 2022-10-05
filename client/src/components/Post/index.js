@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, {useState, useEffect} from 'react'
+import {Image, Video, Transformation} from 'cloudinary-react';
 //icons
 import {AiOutlineHeart} from 'react-icons/ai'
 //styles
@@ -16,7 +17,9 @@ useEffect(() => {
 
   return (
     <PostContainer>
-        <PostImage src={post.postImage} alt={post.name}/>
+      <Image cloudName="Expert Shire" publicId={post.postImage}>
+      <Transformation crop="scale" width="280" angle="10" />
+     </Image>
         <PostDetailsContainer>
         <PostCreator>{user}</PostCreator>
         <AiOutlineHeart />
