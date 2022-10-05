@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import axios from 'axios'
 //styles
 import {InputContainer, Input, InputHeader, OuterContainer, Button} from './styles'
@@ -8,13 +8,14 @@ const Index = () => {
  const [userName, setUserName] = useState('')
  const [email, setEmail] = useState('')
  const [password, setPassword] = useState('')
-
+const navigate = useNavigate()
  const handleSubmit =() =>{
   try {
     console.log({userName, email, password})
     axios.post('http://178.79.132.139:4000/api/users/signup',{userName, email, password}).then(res=>{
      console.log(res.data)
      localStorage.setItem('user', JSON.stringify(res.data))
+     navigate('/')
     }).catch(err=>{
       console.log(err)
     })
