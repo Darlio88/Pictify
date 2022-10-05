@@ -8,7 +8,7 @@ import { PostContainer, PostImage, PostCreator, PostDetailsContainer } from './s
 const Index = ({post}) => {
   const [user, setUser] = useState('')
 useEffect(() => {
-  axios.get(`http://localhost:4000/api/users/single-user?id=${post.createdBy}`).then(res=>{
+  axios.get(`http://178.79.132.139:4000/api/users/single-user?id=${post.createdBy}`).then(res=>{
     setUser(res.data.userName)
     console.log(res.data)
   }).catch(err=>console.log(err))
