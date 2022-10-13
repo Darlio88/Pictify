@@ -3,6 +3,7 @@ import dotenv from 'dotenv'
 import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
 import cors from 'cors'
+import compression from 'compression'
 import {databaseConnection} from './config/dataConn.js'
 
 //routes
@@ -13,6 +14,7 @@ dotenv.config()
 const app = express()
 databaseConnection()
 // app.use(express.urlencoded({extended:true}))
+app.use(compression())
 app.use(bodyParser.json({limit: '50mb'})); // define the size limit
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));	// define the size limit
 app.use(express.json());

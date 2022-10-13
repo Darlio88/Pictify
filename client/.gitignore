@@ -1,5 +1,6 @@
 .env
 
+
 /node_modules
 
 # dependencies
@@ -12,6 +13,10 @@
 
 # production
 /build
+
+# docker file
+.dockerignore
+Dockerfile
 
 # misc
 .DS_Store

@@ -4,10 +4,13 @@ import axios from 'axios'
 
 import  Post from '../Post';
 
+//api
+import { baseUrl } from '../../utils/api';
+
 const breakpointColumnsObj = {
     default: 4,
-    3000: 6,
-    2000: 5,
+    3000: 5,
+    2000: 4,
     1200: 3,
     1000: 2,
     500: 1,
@@ -17,8 +20,8 @@ const breakpointColumnsObj = {
     const [posts, setPosts] = useState([])
     
     useEffect(()=>{
-     axios.get('http://178.79.132.139:4000/api/posts').then((response)=>{
-      console.log(response.data)
+     baseUrl.get('/api/posts').then((response)=>{
+     
       setPosts(response.data)
      }).catch(err=>{
       console.log(err.message)
@@ -26,7 +29,7 @@ const breakpointColumnsObj = {
      })
     },[])
     return (
-      <Mansory className="flex animate-slide-fwd mt-10 " breakpointCols={breakpointColumnsObj}>
+      <Mansory className="flex animate-slide-fwd md:px-0 px-3 mt-14 md:mt-16 md:space-x-8" breakpointCols={breakpointColumnsObj}>
          {posts.map((post, idx)=>(<Post key={idx} post={post} />))}
       </Mansory>
     )

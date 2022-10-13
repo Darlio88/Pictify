@@ -1,9 +1,10 @@
-import React, {useState, useEffect, useLayoutEffect} from 'react'
-import {useNavigate} from 'react-router-dom'
-import axios from 'axios'
+import React, {useState} from 'react'
+import {useNavigate} from "react-router-dom"
 //styles
 import {PostContainer, PostForm, ImageHolder, Button} from './styles'
 
+//api
+import { baseUrl } from '../../utils/api'
 const Index = () => {
   const navigate = useNavigate()
   const [encodedFile, setEncodedFile] = useState('')
@@ -24,11 +25,9 @@ const Index = () => {
   const handleSubmission =(e) =>{
   e.preventDefault()
   if(!encodedFile) return;
-   console.log(encodedFile)
-   if(!user) return alert("login to create a post")
    try {
-    axios.post('http://178.79.132.139:4000/api/posts/create-post', {postImage:encodedFile, createdBy:user._id}).then(res=>{
-      console.log(res.data)
+    baseUrl.post('/api/posts/create', {postImage:encodedFile, createdBy:user._id}).then(res=>{
+      navigate('/')
     }).catch(err=>{
       console.log(err)
     })
@@ -47,7 +46,7 @@ const Index = () => {
           </ImageHolder>}
         <form onSubmit={handleSubmission} className='space-y-2'>
           <input  type='file' placeholder='choose file' onChange={handleFileChange} />
-          <Button type='submit' >Submit</Button>
+          <Button type='submit' >POST</Button>
         </form>
      </PostForm>
     </PostContainer>

@@ -14,6 +14,7 @@ ENV CLOUD_NAME=expert-shire
 ENV API_KEY=424229448227125
 ENV API_SECRET=nNGmbyC5GhDiZDHY7uAk2v6gSDQ
 ENV MONGODB_URI_DEV=mongodb://mongodb:27017/pictify-db
+ENV NODE_ENV=production
 
 
 CMD ["npm", "start"]

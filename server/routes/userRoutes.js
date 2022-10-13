@@ -4,7 +4,7 @@ const route = express.Router()
 
 route.post('/signin',signinUser)
 route.post('/signup',signupUser)
-route.get('/single-user',singleUser)
+route.get('/user',singleUser)
 
 
 export default route

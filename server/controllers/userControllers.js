@@ -7,8 +7,6 @@ var salt = bcrypt.genSaltSync(10);
 export const singleUser = async (req, res) =>{
     try {
         const id = req.query.id
-        console.log(id) 
-        console.log(req.query)
         const user = await PictifyUser.findOne({_id:id}).select('userName').select("-_id").lean().exec()
         res.status(201).send(user)
     } catch (error) {
@@ -43,8 +41,6 @@ export const signupUser = async (req, res) =>{
      const newUser = await PictifyUser.create({userName,email, passwordHash})
      newUser.save()
      res.status(200).json(newUser)
-     
-     console.log(token)
     } catch(err){
         console.log(err)
         res.status(500).send(err)

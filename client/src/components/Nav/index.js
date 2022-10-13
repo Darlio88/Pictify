@@ -1,8 +1,8 @@
-import React, {useState, useEffect, useRef} from 'react'
-import {Link} from 'react-router-dom'
+import React, {useState} from 'react'
+
 
 //styles
-import { NavContainer, NavContainerLeft, NavContainerRight, NavLinks,SlideMenuToggler,NavContainerSide} from './styles'
+import { NavContainer, NavLink, NavContainerLeft, NavContainerRight, NavLinks,SlideMenuToggler,NavContainerSide} from './styles'
 //icons
 import {FaChevronCircleLeft} from 'react-icons/fa'
 import {FiXCircle} from 'react-icons/fi'
@@ -19,7 +19,11 @@ const Index = () => {
     setNavActive((curr)=>!curr)
   }
   const handleLogout = () =>{
-    localStorage.clear()
+    localStorage.removeItem('user')
+  }
+  function LogoutAndToggle(){
+    handleLogout()
+    navToggler()
   }
   return (
     <>
@@ -28,10 +32,11 @@ const Index = () => {
          <img src={LogoWhite} alt='logo' style={{width:120}} />
       </NavContainerLeft>
       <NavContainerRight >
-          <NavLinks>Home</NavLinks>
-          <NavLinks>Create</NavLinks>
-          <NavLinks>About</NavLinks>
-          <NavLinks>Logout</NavLinks>
+      <NavLinks to='/' >Home</NavLinks>
+      <NavLinks to='/create-post' >Create post</NavLinks>
+      {!user && <NavLinks to='/signin' >Login</NavLinks>}
+      <NavLink  rel="noreferrer" href='https://github.com/Darlio88'  target='_blank'>About</NavLink>
+          {user && <NavLinks  onClick={handleLogout} >Logout</NavLinks>}
       </NavContainerRight>
       <SlideMenuToggler onClick={navToggler}>
       {!navActive && <FaChevronCircleLeft size={24} />}
@@ -39,10 +44,11 @@ const Index = () => {
       </SlideMenuToggler>
     </NavContainer>
 {navActive && ( <NavContainerSide>
-          <Link to='/'><NavLinks>Home</NavLinks></Link>
-          <Link to='/create-post'><NavLinks>Home</NavLinks></Link>
-          <NavLinks>About</NavLinks>
-         {user && <NavLinks onClick={handleLogout}>Logout</NavLinks>}
+          <NavLinks to='/' onClick={navToggler}>Home</NavLinks>
+          <NavLinks to='/create-post' onClick={navToggler}>Create post</NavLinks>
+          {!user && <NavLinks to='/signin' onClick={navToggler}>Login</NavLinks>}
+          <NavLink onClick={navToggler} rel="noreferrer" href='https://github.com/Darlio88'  target='_blank'>About</NavLink>
+         {user && <NavLinks  onClick={LogoutAndToggle} >Logout</NavLinks>}
     </NavContainerSide>)}
     </>
   )

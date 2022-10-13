@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import tw from 'twin.macro'
+import {Link} from 'react-router-dom'
 
 export const NavContainer = styled.nav`
 min-height: 48px;
@@ -27,7 +28,15 @@ export const NavContainerRight = styled.div`
   ${tw`hidden md:flex items-center  md:justify-around`}
     ` 
 
-    export const NavLinks = styled.a`
+    export const NavLinks = styled(Link)`
+    color:#f1faee;
+    opacity:0.6;
+    &:hover{
+        opacity:1;
+    }
+    ${tw`cursor-pointer`}
+  `
+    export const NavLink = styled.a`
     color:#f1faee;
     opacity:0.6;
     &:hover{
@@ -41,6 +50,7 @@ height:100vh;
 width:100vw;
 position:fixed;
 top:58px;
+z-index:10;
 transition:all 0.5s linear;
 ${tw`md:hidden flex flex-col items-center justify-center space-y-14 text-lg font-bold`}
 `

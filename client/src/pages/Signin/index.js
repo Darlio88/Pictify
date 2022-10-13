@@ -6,6 +6,9 @@ import axios from 'axios'
 //styles
 import {InputContainer, Input, InputHeader, OuterContainer, Button} from './styles'
 
+//api
+import { baseUrl } from '../../utils/api'
+
 const Index = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -14,8 +17,8 @@ const Index = () => {
 
    try {
      console.log({ email, password})
-     axios.post('http://178.79.132.139:4000/api/users/signin',{ email, password}).then(res=>{
-      console.log(res.data)
+     baseUrl.post('/api/users/signin',{ email, password}).then(res=>{
+      // console.log(res.data)
       navigate('/')
       localStorage.setItem('user', JSON.stringify(res.data))
      }).catch(err=>{
