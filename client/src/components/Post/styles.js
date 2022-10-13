@@ -37,8 +37,11 @@ right:0;
 left:0;
 bottom:0;
 z-index:1;
-opacity:0.4;
-
+&:hover{
+    opacity:0.8;
+}
+opacity:0;
+transition: all 2s ease 1s;
 align-items:space-between;
 justify-content:space-between;
 ${tw`absolute flex  flex-col rounded-md py-1  px-2 mx-2 my-2`}

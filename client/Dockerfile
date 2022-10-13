@@ -9,7 +9,7 @@ RUN npm install
 COPY . .
 
 ENV REACT_APP_CLOUD_NAME='expert-shire'
-ENV REACT_APP_BASE_URL='http://localhost:4000'
+ENV REACT_APP_BASE_URL='http://backend.com:4000'
 ENV NODE_ENV=production 
 
 EXPOSE 3000
