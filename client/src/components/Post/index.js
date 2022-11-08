@@ -27,7 +27,7 @@ console.log(res.data)
     }).catch(err=>console.log(err))
   }
 }
-console.log(post.likes.includes(loggedInUser?._id))
+
 const handleDelete = ()=>{
   if(loggedInUser){
     baseUrl.delete(`/api/posts/${post?._id}`, {userId:loggedInUser?._id}).then(res=>{
