@@ -11,7 +11,7 @@ const postSchema = mongoose.Schema({
         type: Date,
         default: new Date()
     },
-    likes:[String]
+    likes:[{type:String}]
 })
 
 export const PictifyImage = mongoose.model('PictifyImage',postSchema)

@@ -2,9 +2,9 @@ import axios from 'axios'
 import React, {useState, useEffect} from 'react'
 import {Image, Video, Transformation} from 'cloudinary-react';
 //icons
-import {AiOutlineHeart} from 'react-icons/ai'
+import {AiOutlineHeart,AiTwotoneHeart} from 'react-icons/ai'
 //styles
-import { PostContainer, PostImage, Lower, Upper, PostCreator, PostDetailsContainer } from './styles'
+import { PostContainer, PostImage, Lower, Upper, PostCreator, PostDetailsContainer, LikeButton } from './styles'
 
 //api
 import { baseUrl } from '../../utils/api';
@@ -22,15 +22,15 @@ useEffect(() => {
 
 const handleLiked = ()=>{
   if(loggedInUser){
-    baseUrl.patch(`/api/posts/${post._id}`).then(res=>{
+    baseUrl.patch(`/api/posts/${post?._id}`).then(res=>{
 console.log(res.data)
     }).catch(err=>console.log(err))
   }
 }
-
+console.log(post.likes.includes(loggedInUser?._id))
 const handleDelete = ()=>{
   if(loggedInUser){
-    baseUrl.delete(`/api/posts/${post._id}`, {userId:loggedInUser?._id}).then(res=>{
+    baseUrl.delete(`/api/posts/${post?._id}`, {userId:loggedInUser?._id}).then(res=>{
 console.log(res.data)
     }).catch(err=>console.log(err))
   }
@@ -47,12 +47,19 @@ console.log(res.data)
         <PostDetailsContainer>
           <Upper >
             <PostCreator>{user}</PostCreator>
-            <button disabled={loggedInUser?false:true}  className='flex space-x-1 items-center' onClick={handleLiked}>
-            <AiOutlineHeart /> <small>{post.likes.length}</small>
-            </button>
+            <LikeButton disabled={loggedInUser?false:true} onClick={handleLiked}>
+              {post.likes.includes(loggedInUser?._id) ?
+              <AiOutlineHeart /> 
+               :
+               <AiTwotoneHeart /> 
+              }
+            
+            <small>{post.likes.length}</small>
+           
+            </LikeButton>
         </Upper>
         <Lower>
-   {  (loggedInUser._id === post.createdBy) && <button 
+   {  (loggedInUser?._id === post.createdBy) && <button 
    onClick={handleDelete}
     className='rounded-lg px-2 py-1 my-1' style={{backgroundColor:'red'}}>
             DELETE

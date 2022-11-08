@@ -3,8 +3,12 @@ import tw from 'twin.macro'
 
 
 export const PostContainer = styled.div`
-    
-    ${tw`relative w-max  p-1 pr-2 pt-2 pb-2`}
+    &:hover{
+        transform: scale(1.01);
+        border-radius: .125rem;
+        overflow:hidden;
+    }
+    ${tw`relative w-max my-2`}
     `
 
 export const PostImage = styled.img`
@@ -38,11 +42,16 @@ left:0;
 bottom:0;
 z-index:1;
 &:hover{
-    opacity:0.8;
+    opacity:0.6;
 }
 opacity:0;
-transition: all 2s ease 1s;
+transition: cubic-bezier(0.075, 0.82, 0.165, 1);
 align-items:space-between;
 justify-content:space-between;
-${tw`absolute flex  flex-col rounded-md py-1  px-2 mx-2 my-2`}
+${tw`absolute flex  flex-col rounded-md py-1  px-2 `}
 `
+
+export const LikeButton = styled.button`
+${tw`flex space-x-1 items-center`}
+`
+
