@@ -61,7 +61,7 @@ console.log(res.data)
             </LikeButton>
         </Upper>
         <Lower>
-          <TimeText>{moment(post.createdAt).fromNow()}</TimeText>
+          <TimeText>{moment(post.createdAt).startOf('hour').fromNow()}</TimeText>
    {  (loggedInUser?._id === post.createdBy) && <button 
    onClick={handleDelete}
     className='rounded-lg px-2 py-1 my-1' style={{backgroundColor:'red'}}>
