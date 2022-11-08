@@ -38,6 +38,7 @@ export const createPost = async (req, res) =>{
     }
 
 //handle liked
+
 export const handleLiked = async (req, res)=>{
   try {
     const {id} = req.params;

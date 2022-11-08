@@ -22,7 +22,7 @@ useEffect(() => {
 
 const handleLiked = ()=>{
   if(loggedInUser){
-    baseUrl.patch(`/api/posts/${post?._id}`).then(res=>{
+    baseUrl.patch(`/api/posts/${post?._id}`,{userId:loggedInUser?._id}).then(res=>{
 console.log(res.data)
     }).catch(err=>console.log(err))
   }
