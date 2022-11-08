@@ -26,12 +26,15 @@ export const PostCreator = styled.h6`
 `
 export const Lower = styled.div`
 
-${tw`w-full flex justify-end items-end `}
+${tw`w-full flex justify-between items-end `}
 `
 export const Upper = styled.div`
 ${tw`w-full flex justify-between`}
 `
-
+export const TimeText = styled.h6`
+text-align:start;
+${tw`italic text-xs`}
+`
 
 export const PostDetailsContainer = styled.div` 
 color:#f1faee;

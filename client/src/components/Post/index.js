@@ -1,10 +1,11 @@
 import axios from 'axios'
+import moment from 'moment'
 import React, {useState, useEffect} from 'react'
 import {Image, Video, Transformation} from 'cloudinary-react';
 //icons
 import {AiOutlineHeart,AiTwotoneHeart} from 'react-icons/ai'
 //styles
-import { PostContainer, PostImage, Lower, Upper, PostCreator, PostDetailsContainer, LikeButton } from './styles'
+import { PostContainer, PostImage, TimeText, Lower, Upper, PostCreator, PostDetailsContainer, LikeButton } from './styles'
 
 //api
 import { baseUrl } from '../../utils/api';
@@ -60,6 +61,7 @@ console.log(res.data)
             </LikeButton>
         </Upper>
         <Lower>
+          <TimeText>{moment(post.createdAt).fromNow()}</TimeText>
    {  (loggedInUser?._id === post.createdBy) && <button 
    onClick={handleDelete}
     className='rounded-lg px-2 py-1 my-1' style={{backgroundColor:'red'}}>
