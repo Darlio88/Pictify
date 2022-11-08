@@ -49,9 +49,10 @@ console.log(res.data)
             <PostCreator>{user}</PostCreator>
             <LikeButton disabled={loggedInUser?false:true} onClick={handleLiked}>
               {post.likes.includes(loggedInUser?._id) ?
-              <AiOutlineHeart /> 
-               :
                <AiTwotoneHeart /> 
+               :
+               <AiOutlineHeart /> 
+             
               }
             
             <small>{post.likes.length}</small>
