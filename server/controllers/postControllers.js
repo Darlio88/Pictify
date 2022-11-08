@@ -42,7 +42,7 @@ export const createPost = async (req, res) =>{
 export const handleLiked = async (req, res)=>{
   try {
     const {id} = req.params;
-    const userId= req.body.id;
+    const {userId}= req.body;
     let getPost = await PictifyImage.findById(id);
     if(!getPost){
         return res.status(400).send("post doesn't exist")
