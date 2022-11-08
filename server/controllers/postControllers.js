@@ -42,13 +42,12 @@ export const handleLiked = async (req, res)=>{
   try {
     const {id} = req.params;
     const userId= req.body.id;
-    const getPost = await PictifyImage.findById(id);
+    let getPost = await PictifyImage.findById(id);
     if(!getPost){
-        res.status(400).send("post doesn't exist")
-        return
+        return res.status(400).send("post doesn't exist")
     }
-    if(getPost.likes.indexOf(userId) !==-1){
-    getPost.likes = getPost.likes.filter(id => id != userId)
+    if(getPost.likes.includes(userId)){
+    getPost.likes = getPost.likes.filter(id => id !== userId)
     await getPost.save()
     return res.status(200).send("post Unliked")
     } else {
