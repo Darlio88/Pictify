@@ -1,2 +1,2 @@
 # PICTIFY
-this is 
+This is a photo sharing application built using the MERN stack
